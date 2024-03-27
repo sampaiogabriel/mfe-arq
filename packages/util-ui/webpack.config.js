@@ -1,10 +1,10 @@
-const { merge } = require("webpack-merge");
-const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
+const { merge } = require('webpack-merge');
+const singleSpaDefaults = require('webpack-config-single-spa-react-ts');
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
-    orgName: "sampaiogabriel",
-    projectName: "util-ui",
+    orgName: 'sampaiogabriel',
+    projectName: 'util-ui',
     webpackConfigEnv,
     argv,
   });
