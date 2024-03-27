@@ -1,4 +1,4 @@
-import { Link, LinksSection, Title, Wrapper } from "./styles";
+import { Link, LinksSection, Title, Wrapper } from './styles';
 
 export default function Header() {
   return (

@@ -1469,10 +1469,10 @@
     single-spa-react "^4.3.1"
     zustand "4.3.3"
 
-"@sampaiogabriel/util-ui@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@sampaiogabriel/util-ui/-/util-ui-1.0.5.tgz#83f15fdf650f754b37722db9ce41dabc507ed914"
-  integrity sha512-pPLzu1kyc81o6lTrperLWujLwa8ELGzAaI6YoY73naYP4hY4G6D7zaWkC0SiTM46aSBmf8WBmhbDYOLNCXs3Og==
+"@sampaiogabriel/util-ui@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@sampaiogabriel/util-ui/-/util-ui-1.0.6.tgz#78fac09b5d9a8639ce6792db68b8d90f39475c08"
+  integrity sha512-Ral43STU+DqQjpqHqNNfNMVR0xRt7eIaoLi5VnPrOuei5+iQcS6x8Wsgcb4HvpScEG1Q6mxUf17JNKy9fuEb2A==
   dependencies:
     "@types/jest" "^27.0.1"
     "@types/react" "^17.0.19"
