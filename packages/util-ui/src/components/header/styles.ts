@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.header`
-  width: 100%;
-  height: 4rem;
+  height: 3rem;
 
   background-color: #0c0c0c;
 
@@ -10,14 +9,17 @@ export const Wrapper = styled.header`
   flex-direction: row;
 
   justify-content: space-between;
+  align-items: center;
 
-  padding: 0rem 4rem;
+  padding: 0rem 2rem;
 `;
 
 export const Title = styled.h1`
   font-family: "Courier New", Courier, monospace;
-  font-size: 16pt;
+  font-size: 14pt;
   font-weight: 700;
+
+  color: white;
 `;
 
 export const LinksSection = styled.div`
@@ -29,8 +31,10 @@ export const LinksSection = styled.div`
 
 export const Link = styled.a`
   font-family: "Courier New", Courier, monospace;
-  font-size: 14pt;
+  font-size: 12pt;
   font-weight: 500;
+
+  cursor: pointer;
 
   color: white;
   text-decoration: none;
