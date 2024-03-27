@@ -1,16 +1,16 @@
 {
-  "name": "root",
-  "private": true,
-  "scripts": {
-    "start": "lerna run --parallel start",
-    "build": "lerna run --parallel build",
-    "serve": "lerna run --parallel serve",
-    "deploy": "lerna run deploy",
-    "kill-ports": "kill-port --port 9000,8000,7000,7001",
-    "dev": "npm run kill-ports && lerna run start --parallel"
-  },
-  "devDependencies": {
-    "lerna": "^8.0.2",
-    "kill-port": "^2.0.1"
-  }
+    "name": "root",
+    "private": true,
+    "scripts": {
+        "start": "lerna run --parallel start",
+        "build": "lerna run --parallel build",
+        "serve": "lerna run --parallel serve",
+        "deploy": "lerna run deploy",
+        "kill-ports": "kill-port --port 9000,8000,7000,7001,6001,6002",
+        "dev": "npm run kill-ports && lerna run start --parallel"
+    },
+    "devDependencies": {
+        "lerna": "^8.0.2",
+        "kill-port": "^2.0.1"
+    }
 }
