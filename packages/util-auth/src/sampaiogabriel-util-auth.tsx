@@ -1,2 +1,4 @@
-// Anything exported from this file is importable by other in-browser modules.
-export function publicApiFunction() {}
+import { AuthProviderComponent } from './components/AuthProvider';
+import { useAuth } from "react-oidc-context";
+
+export { AuthProviderComponent, useAuth };
