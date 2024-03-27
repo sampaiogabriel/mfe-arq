@@ -1,0 +1,10 @@
+{
+  "extends": "ts-config-single-spa",
+  "files": ["src/sampaiogabriel-root-config.ts"],
+  "compilerOptions": {
+    "declarationDir": "dist",
+    "emitDeclarationOnly": false
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.test*"]
+}
