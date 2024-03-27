@@ -15,7 +15,10 @@
     "lint": "eslint src --ext js,ts,tsx",
     "lint:create-config": "yarn lint:update && yarn lint:create-eslintrc",
     "lint:update": "yarn add @sampaiogabriel/eslint-config-mfe@latest --dev",
-    "lint:create-eslintrc": "echo { \"extends\": \"@sampaiogabriel/eslint-config-mfe\" } > temp_eslintrc.json && move /Y temp_eslintrc.json .eslintrc.json"
+    "lint:create-eslintrc": "echo { \"extends\": \"@sampaiogabriel/eslint-config-mfe\" } > temp_eslintrc.json && move /Y temp_eslintrc.json .eslintrc.json",
+    "update-util": "yarn add @sampaiogabriel/util-state@latest @sampaiogabriel/util-ui@latest",
+    "remove-util": "yarn remove @sampaiogabriel/util-state@latest && yarn remove @sampaiogabriel/util-ui@latest",
+    "util": "yarn remove-util && yarn update-util"
   },
   "devDependencies": {
     "@babel/core": "^7.23.3",
