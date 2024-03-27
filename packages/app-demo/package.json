@@ -17,7 +17,7 @@
     "lint:update": "yarn add @sampaiogabriel/eslint-config-mfe@latest --dev",
     "lint:create-eslintrc": "echo { \"extends\": \"@sampaiogabriel/eslint-config-mfe\" } > temp_eslintrc.json && move /Y temp_eslintrc.json .eslintrc.json",
     "update-util": "yarn add @sampaiogabriel/util-state@latest @sampaiogabriel/util-ui@latest",
-    "remove-util": "yarn remove @sampaiogabriel/util-state@latest && yarn remove @sampaiogabriel/util-ui@latest",
+    "remove-util": "yarn remove @sampaiogabriel/util-state && yarn remove @sampaiogabriel/util-ui",
     "util": "yarn remove-util && yarn update-util"
   },
   "devDependencies": {
@@ -50,8 +50,8 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@sampaiogabriel/util-state": "^1.0.3",
-    "@sampaiogabriel/util-ui": "^1.0.4",
+    "@sampaiogabriel/util-state": "^1.0.6",
+    "@sampaiogabriel/util-ui": "^1.0.5",
     "@types/jest": "^27.0.1",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
