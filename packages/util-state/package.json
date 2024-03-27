@@ -9,8 +9,8 @@
     "dist"
   ],
   "scripts": {
-    "start": "webpack serve",
-    "start:standalone": "webpack serve --port 7000 --env standalone",
+    "start": "webpack serve --port 7000",
+    "start:standalone": "webpack serve --env standalone",
     "build": "concurrently yarn:build:*",
     "build:webpack": "webpack --mode=production",
     "analyze": "webpack --mode=production --env analyze",

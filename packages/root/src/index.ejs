@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Root Config</title>
+    <title>Arquitetura MFE</title>
 
     <!--
     Remove this if you only support browsers that support async/await.
@@ -57,7 +57,10 @@
       {
         "imports": {
           "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
-          "@sampaiogabriel/root-config": "//localhost:9000/sampaiogabriel-root-config.js"
+          "@sampaiogabriel/root-config": "//localhost:9000/sampaiogabriel-root-config.js",
+          "@sampaiogabriel/app-demo": "//localhost:8000/sampaiogabriel-app-demo.js",
+          "@sampaiogabriel/util-state": "//localhost:7000/sampaiogabriel-util-state.js",
+          "@sampaiogabriel/util-ui": "//localhost:7001/sampaiogabriel-util-ui.js"
         }
       }
     </script>
