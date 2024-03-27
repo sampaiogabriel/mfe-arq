@@ -1,4 +1,4 @@
-import { Thing } from '@sampaiogabriel/util-ui'
+import { Thing } from '@sampaiogabriel/util-ui';
 
 export default function Root(props) {
   return (
@@ -6,5 +6,5 @@ export default function Root(props) {
       <section>{props.name} is mounted!</section>
       <Thing />
     </>
-  )
+  );
 }

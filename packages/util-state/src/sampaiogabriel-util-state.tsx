@@ -1,3 +1,3 @@
-import useCounter from './hooks/useCounter'
+import useCounter from './hooks/useCounter';
 
-export { useCounter }
+export { useCounter };
