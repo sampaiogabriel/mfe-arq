@@ -1,2 +1,3 @@
-// Anything exported from this file is importable by other in-browser modules.
-export function publicApiFunction() {}
+import useCounter from './hooks/useCounter'
+
+export { useCounter }

@@ -1415,7 +1415,7 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.25.tgz#f077fdc0b5d0078d30893396ff4827a13f99e817"
   integrity sha512-j7P6Rgr3mmtdkeDGTe0E/aYyWEWVtc5yFXtHCRHs28/jptDEWfaVOc5T7cblqy1XKPPfCxJc/8DwQ5YgLOZOVQ==
 
-"@sampaiogabriel/eslint-config-mfe@^1.0.0":
+"@sampaiogabriel/eslint-config-mfe@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@sampaiogabriel/eslint-config-mfe/-/eslint-config-mfe-1.0.2.tgz#caef22af27188aa3495f4538528d5a08dcfd676c"
   integrity sha512-CmuQyR9hfeYgL2iniIgXZFhOPHK5Xg/CMVh70NnPb/KWL4YJ+4n+Xu5Xb6SBGJ9EhyQkP42weONlkOvGIJN4Qg==
@@ -1435,6 +1435,37 @@
     eslint-plugin-react "^7.33.2"
     eslint-plugin-react-hooks "^4.6.0"
     prettier "^3.2.5"
+
+"@sampaiogabriel/util-state@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@sampaiogabriel/util-state/-/util-state-1.0.3.tgz#0059b0f5b4d24acc6030798b2e90d8b005dfc5bb"
+  integrity sha512-V3OZJlGnfx1axvQsIDcY/E8/WGt2OQmlJYddC0mNGnALBI/VHXCPjRiOHwdlNh8RVAg/lKN/4r+IxTKhIfUPQg==
+  dependencies:
+    "@types/jest" "^27.0.1"
+    "@types/react" "^17.0.19"
+    "@types/react-dom" "^17.0.9"
+    "@types/systemjs" "^6.1.1"
+    "@types/webpack-env" "^1.16.2"
+    react "^17.0.2"
+    react-dom "^17.0.2"
+    single-spa "^5.9.3"
+    single-spa-react "^4.3.1"
+    zustand "4.3.3"
+
+"@sampaiogabriel/util-ui@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@sampaiogabriel/util-ui/-/util-ui-1.0.4.tgz#1eef47874837b4b2ec30a13a03c7e5979f90a33e"
+  integrity sha512-7qnAuM4ag7zSQwzAF+/LFlOLKT1c7zpttZGNqHOeXrQ4I6Lu+376f8Rx5sfjcbM+SLCWTS/2blvCHjMiLg3k6Q==
+  dependencies:
+    "@types/jest" "^27.0.1"
+    "@types/react" "^17.0.19"
+    "@types/react-dom" "^17.0.9"
+    "@types/systemjs" "^6.1.1"
+    "@types/webpack-env" "^1.16.2"
+    react "^17.0.2"
+    react-dom "^17.0.2"
+    single-spa "^5.9.3"
+    single-spa-react "^4.3.1"
 
 "@sinclair/typebox@^0.27.8":
   version "0.27.8"
@@ -7270,6 +7301,11 @@ url-parse@^1.5.3:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
 
+use-sync-external-store@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
+  integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
+
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
@@ -7699,3 +7735,10 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zustand@4.3.3:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-4.3.3.tgz#c9113499074dde2d6d99c1b5f591e9329572c224"
+  integrity sha512-x2jXq8S0kfLGNwGh87nhRfEc2eZy37tSatpSoSIN+O6HIaBhgQHSONV/F9VNrNcBcKQu/E80K1DeHDYQC/zCrQ==
+  dependencies:
+    use-sync-external-store "1.2.0"
