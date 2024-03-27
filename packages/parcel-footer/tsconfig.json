@@ -1,0 +1,10 @@
+{
+  "extends": "ts-config-single-spa",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "declarationDir": "src"
+  },
+  "files": ["src/sampaiogabriel-parcel-footer.tsx"],
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.test*"]
+}
