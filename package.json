@@ -6,7 +6,7 @@
     "build": "lerna run --parallel build",
     "serve": "lerna run --parallel serve",
     "deploy": "lerna run deploy",
-    "kill-ports": "kill-port --port 9000,8000,7000,7001,7002",
+    "kill-ports": "kill-port --port 9000,8000,7000,7001,7002,6001,6002",
     "dev": "npm run kill-ports && lerna run start --parallel"
   },
   "devDependencies": {
