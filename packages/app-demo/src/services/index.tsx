@@ -1,5 +1,4 @@
-// @ts-ignore
-import { useAxios } from '@sampaiogabriel/util-axios';
+import { useAxiosInstanceHook } from '@sampaiogabriel/util-axios';
 
 type FiltroType = (filtro: any) => Promise<any>;
 
@@ -8,11 +7,12 @@ export interface ServicoType {
 }
 
 const useTodoServico = (): ServicoType => {
-  const api = useAxios();
+  const { axiosInstance } = useAxiosInstanceHook();
+  const api = axiosInstance;
 
   const get: FiltroType = (filtro) =>
     api
-      .get<any>()
+      .get<any>('/')
       .then((response) => response.data)
       .catch((error) => ({ ...error?.response?.data, sucesso: false }));
 

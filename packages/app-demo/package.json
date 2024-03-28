@@ -50,6 +50,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@sampaiogabriel/util-axios": "^1.0.7",
     "@sampaiogabriel/util-state": "^1.0.6",
     "@sampaiogabriel/util-ui": "^1.0.6",
     "@types/jest": "^27.0.1",
