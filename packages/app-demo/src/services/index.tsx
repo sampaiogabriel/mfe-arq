@@ -1,15 +1,14 @@
-import { useAxios } from "@sampaiogabriel/util-axios";
+import { useAxios, useAxiosInstanceHook } from "@sampaiogabriel/util-axios";
 
-type FiltroType = (filtro?: any) => Promise<any>;
+type FiltroType = (filtro: any) => Promise<any>;
 
 export interface ServicoType {
   get: FiltroType;
 }
 
 const useTodoServico = (): ServicoType => {
-  const api = useAxios({
-    prefixo: "",
-  });
+  const { axiosInstance } = useAxiosInstanceHook();
+  const api = axiosInstance;
 
   const get: FiltroType = (filtro) =>
     api
