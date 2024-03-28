@@ -2,15 +2,36 @@
 /* eslint-disable react/function-component-definition */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-import { Thing } from '@sampaiogabriel/util-ui';
+import { Thing } from "@sampaiogabriel/util-ui";
+import { useAxios } from "@sampaiogabriel/util-axios";
+
+interface Todo {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
 
 export default function Root(props) {
-  return (
-    <>
-      <section>{props.name} is mounted!</section>
-      <Thing />
+  const { data, loading, error } = useAxios<Todo[]>({
+    method: "GET",
+    url: "https://jsonplaceholder.typicode.com/todos",
+  });
 
-      <div />
-    </>
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <div>
+      <h1>Todos</h1>
+      <ul>
+        {data?.map((todo) => (
+          <li key={todo.id}>
+            <input type="checkbox" checked={todo.completed} readOnly />
+            <span>{todo.title}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
