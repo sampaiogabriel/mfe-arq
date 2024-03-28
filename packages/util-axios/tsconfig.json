@@ -1,0 +1,12 @@
+{
+    "extends": "ts-config-single-spa",
+    "compilerOptions": {
+      "jsx": "react-jsx",
+      "declarationDir": "dist",
+      "emitDeclarationOnly": false
+    },
+    "files": ["src/sampaiogabriel-util-axios.tsx"],
+    "include": ["src/**/*"],
+    "exclude": ["src/**/*.test*"]
+  }
+  

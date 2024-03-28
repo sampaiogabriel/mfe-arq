@@ -4,22 +4,22 @@ import { AuthProvider } from 'react-oidc-context';
 import AuthHelpers from './components/AuthHelpers';
 
 export const oidcConfig = {
-    authority: 'https://login.e-auditoria.com.br/realms/aplicacao-cliente',
-    client_id: 'client-cliente',
-    redirect_uri: 'http://localhost:9000',
-    client_secret: 'EldjqZ7LDThiQ0f4DuLxIIf38VyilZdP',
+  authority: 'https://login.e-auditoria.com.br/realms/aplicacao-cliente',
+  client_id: 'client-cliente',
+  redirect_uri: 'http://localhost:9000',
+  client_secret: 'EldjqZ7LDThiQ0f4DuLxIIf38VyilZdP',
 };
 
 interface AuthProviderComponentProps {
-    children: ReactNode
+  children: ReactNode
 }
 
 const Root: FC<AuthProviderComponentProps> = ({ children }): ReactElement => {
-    return (
-        <AuthProvider {...oidcConfig} onSigninCallback={() => { window.location.href = "/" }}>
-            <AuthHelpers />
-        </AuthProvider>
-    )
+  return (
+    <AuthProvider {...oidcConfig} onSigninCallback={() => { window.location.href = "/" }}>
+      <AuthHelpers />
+    </AuthProvider>
+  )
 };
 
 export default Root;
