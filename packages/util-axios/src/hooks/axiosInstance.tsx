@@ -1,7 +1,7 @@
 import { useUserStore } from "@sampaiogabriel/util-state";
 import axios from "axios";
 
-const BASE_URL = "";
+const BASE_URL = "https://jsonplaceholder.typicode.com/todos";
 const URL_REDIRECT = "";
 const URL_UPDATE_TOKEN = "";
 
