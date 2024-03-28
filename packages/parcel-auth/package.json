@@ -1,11 +1,11 @@
 {
-  "name": "@sampaiogabriel/util-auth",
+  "name": "@sampaiogabriel/parcel-auth",
   "version": "1.0.0",
   "private": false,
   "scripts": {
-    "start": "webpack serve --port 7002",
+    "start": "webpack serve --port 6003",
     "start:standalone": "webpack serve --env standalone",
-    "build": "concurrently yarn:build:*",
+    "build": "concurrently pnpm:build:*",
     "build:webpack": "webpack --mode=production",
     "analyze": "webpack --mode=production --env analyze",
     "format": "prettier --write .",
@@ -50,6 +50,8 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@sampaiogabriel/util-state": "^1.0.6",
+    "@sampaiogabriel/util-ui": "^1.0.5",
     "@types/jest": "^27.0.1",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
@@ -62,5 +64,5 @@
     "single-spa": "^5.9.3",
     "single-spa-react": "^4.3.1"
   },
-  "types": "dist/sampaiogabriel-util-auth.d.ts"
+  "types": "dist/sampaiogabriel-parcel-auth.d.ts"
 }

@@ -1,8 +1,9 @@
 import React, { FC, ReactElement, ReactNode } from 'react';
 
 import { AuthProvider } from 'react-oidc-context';
+import AuthHelpers from './components/AuthHelpers';
 
-const oidcConfig = {
+export const oidcConfig = {
     authority: 'https://login.e-auditoria.com.br/realms/aplicacao-cliente',
     client_id: 'client-cliente',
     redirect_uri: 'http://localhost:9000',
@@ -13,13 +14,12 @@ interface AuthProviderComponentProps {
     children: ReactNode
 }
 
-const AuthProviderComponent: FC<AuthProviderComponentProps> = ({ children }): ReactElement => {
-
+const Root: FC<AuthProviderComponentProps> = ({ children }): ReactElement => {
     return (
         <AuthProvider {...oidcConfig}>
-            {children}
+            <AuthHelpers />
         </AuthProvider>
     )
 };
 
-export { AuthProviderComponent };
+export default Root;

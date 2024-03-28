@@ -2,9 +2,9 @@
   "extends": "ts-config-single-spa",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "declarationDir": "dist"
+    "declarationDir": "src"
   },
-  "files": ["src/sampaiogabriel-util-auth.tsx"],
+  "files": ["src/sampaiogabriel-parcel-auth.tsx"],
   "include": ["src/**/*"],
   "exclude": ["src/**/*.test*"]
 }
