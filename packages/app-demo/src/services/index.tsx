@@ -1,4 +1,5 @@
-import { useAxios } from "@sampaiogabriel/util-axios";
+// @ts-ignore
+import { useAxios } from '@sampaiogabriel/util-axios';
 
 type FiltroType = (filtro: any) => Promise<any>;
 

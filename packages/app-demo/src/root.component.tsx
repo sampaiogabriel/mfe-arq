@@ -2,8 +2,8 @@
 /* eslint-disable react/function-component-definition */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-import { Thing } from "@sampaiogabriel/util-ui";
-import { useAxios } from "@sampaiogabriel/util-axios";
+import { useAxios } from '@sampaiogabriel/util-axios';
+import { Thing } from '@sampaiogabriel/util-ui';
 
 interface Todo {
   userId: number;
@@ -14,8 +14,8 @@ interface Todo {
 
 export default function Root(props) {
   const { data, loading, error } = useAxios<Todo[]>({
-    method: "GET",
-    url: "https://jsonplaceholder.typicode.com/todos",
+    method: 'GET',
+    url: 'https://jsonplaceholder.typicode.com/todos',
   });
 
   if (loading) return <div>Loading...</div>;
