@@ -2,8 +2,8 @@
 /* eslint-disable react/function-component-definition */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-import { Thing } from "@sampaiogabriel/util-ui";
-import { useAxios } from "@sampaiogabriel/util-axios";
+import useTodoServico from "./services";
+import { useEffect, useState } from "react";
 
 interface Todo {
   userId: number;
@@ -13,19 +13,23 @@ interface Todo {
 }
 
 export default function Root(props) {
-  const { data, loading, error } = useAxios<Todo[]>({
-    method: "GET",
-    url: "https://jsonplaceholder.typicode.com/todos",
-  });
+  const [todoList, setTodoList] = useState([]);
+  const api = useTodoServico();
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  async function getTodos() {
+    const response = await api.get();
+    setTodoList(response);
+  }
+
+  useEffect(() => {
+    getTodos();
+  }, []);
 
   return (
     <div>
       <h1>Todos</h1>
       <ul>
-        {data?.map((todo) => (
+        {todoList?.map((todo) => (
           <li key={todo.id}>
             <input type="checkbox" checked={todo.completed} readOnly />
             <span>{todo.title}</span>
