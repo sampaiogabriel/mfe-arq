@@ -16,7 +16,7 @@ interface AuthProviderComponentProps {
 
 const Root: FC<AuthProviderComponentProps> = ({ children }): ReactElement => {
     return (
-        <AuthProvider {...oidcConfig}>
+        <AuthProvider {...oidcConfig} onSigninCallback={() => { window.location.href = "/" }}>
             <AuthHelpers />
         </AuthProvider>
     )
