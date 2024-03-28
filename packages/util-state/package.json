@@ -1,6 +1,6 @@
 {
   "name": "@sampaiogabriel/util-state",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "private": false,
   "types": "dist/index.d.ts",
   "main": "dist/cjs/index.js",
