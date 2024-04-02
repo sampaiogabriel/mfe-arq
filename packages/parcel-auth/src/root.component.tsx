@@ -1,25 +1,40 @@
-import React, { FC, ReactElement, ReactNode } from 'react';
+import React, { useEffect, useState } from 'react';
+import { decodeJWT, getToken, redirectToKeycloak } from './keycloak';
 
-import { AuthProvider } from 'react-oidc-context';
-import AuthHelpers from './components/AuthHelpers';
+const root = () => {
+  const [loading, setLoading] = useState(true);
 
-export const oidcConfig = {
-  authority: 'https://login.e-auditoria.com.br/realms/aplicacao-cliente',
-  client_id: 'client-cliente',
-  redirect_uri: 'http://localhost:9000',
-  client_secret: 'EldjqZ7LDThiQ0f4DuLxIIf38VyilZdP',
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+
+    if (token) {
+      const result = decodeJWT(token);
+
+      console.log('result', result);
+    }
+
+    // const urlParams = new URLSearchParams(window.location.hash.split("#")[1]);
+    // const code = urlParams.get("code");
+
+    // if (code) {
+    //   getToken(code);
+    // }
+
+    if (!token) {
+      const urlParams = new URLSearchParams(window.location.hash.split("#")[1]);
+      const code = urlParams.get("code");
+
+      if (code) {
+        getToken(code);
+      } else {
+        redirectToKeycloak();
+      }
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  return null
 };
 
-interface AuthProviderComponentProps {
-  children: ReactNode
-}
-
-const Root: FC<AuthProviderComponentProps> = ({ children }): ReactElement => {
-  return (
-    <AuthProvider {...oidcConfig} onSigninCallback={() => { window.location.href = "/" }}>
-      <AuthHelpers />
-    </AuthProvider>
-  )
-};
-
-export default Root;
+export default root;
