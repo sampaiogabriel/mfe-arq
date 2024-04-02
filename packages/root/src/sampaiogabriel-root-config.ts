@@ -13,7 +13,7 @@ import microfrontendLayout from './microfrontend-layout-protected.html';
 const baseUrl = 'https://login.e-auditoria.com.br';
 const realm = 'aplicacao-cliente';
 const clientId = 'client-cliente';
-// const client_secret = 'EldjqZ7LDThiQ0f4DuLxIIf38VyilZdP';
+const clientSecret = 'EldjqZ7LDThiQ0f4DuLxIIf38VyilZdP';
 const redirect = 'http://localhost:9000';
 
 const token = sessionStorage.getItem('token');
@@ -27,9 +27,6 @@ const generateRandomState = () => {
 };
 
 export const redirectToKeycloak = () => {
-  sessionStorage.clear();
-  localStorage.clear();
-
   const state = generateRandomState();
   const nonce = generateRandomState();
   const urlParams = {
@@ -44,10 +41,53 @@ export const redirectToKeycloak = () => {
   const connectionURI = new URL(
     `${baseUrl}/realms/${realm}/protocol/openid-connect/auth`,
   );
+
   for (const key of Object.keys(urlParams)) {
     connectionURI.searchParams.append(key, urlParams[key]);
   }
+
+  console.log('connectionURI', connectionURI);
+
   window.location.href = `${connectionURI}`;
+};
+
+export const getToken = async (code) => {
+  try {
+    const formData = new URLSearchParams();
+    formData.append('client_id', clientId);
+    formData.append('client_secret', clientSecret);
+    formData.append('grant_type', 'authorization_code');
+    formData.append('code', code);
+    formData.append('redirect_uri', redirect);
+
+    const response = await fetch(
+      `${baseUrl}/realms/${realm}/protocol/openid-connect/token`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData.toString(),
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to get token');
+    }
+
+    const data = await response.json();
+
+    console.log('data', data);
+
+    sessionStorage.setItem('token', data.access_token);
+    sessionStorage.setItem('id_token', data.id_token);
+    sessionStorage.setItem('refresh_token', data.refresh_token);
+    sessionStorage.setItem('session_state', data.session_state);
+    window.history.replaceState({}, '', '/');
+    // window.location.reload();
+  } catch (error) {
+    console.error('Error:', error);
+  }
 };
 
 const validateToken = async (refreshToken: string) => {
@@ -77,28 +117,37 @@ const validateToken = async (refreshToken: string) => {
   }
 };
 
+const urlParams = new URLSearchParams(window.location.hash.split('#')[1]);
+const code = urlParams.get('code');
+
+if (code) {
+  getToken(code);
+}
+
 const refreshToken = sessionStorage.getItem('refresh_token');
 
-validateToken(refreshToken)
-  .then((e) => {
-    console.log('teste');
+if (refreshToken) {
+  validateToken(refreshToken)
+    .then((e) => {
+      console.log('teste');
 
-    const routes = constructRoutes(microfrontendLayout);
+      const routes = constructRoutes(microfrontendLayout);
 
-    const applications = constructApplications({
-      routes,
-      loadApp({ name }) {
-        return System.import(name);
-      },
+      const applications = constructApplications({
+        routes,
+        loadApp({ name }) {
+          return System.import(name);
+        },
+      });
+      const layoutEngine = constructLayoutEngine({ routes, applications });
+
+      applications.forEach(registerApplication);
+      layoutEngine.activate();
+      start();
+    })
+    .catch((err) => {
+      console.log('errsssssssssssssssssssssssssss', err);
+
+      redirectToKeycloak();
     });
-    const layoutEngine = constructLayoutEngine({ routes, applications });
-
-    applications.forEach(registerApplication);
-    layoutEngine.activate();
-    start();
-  })
-  .catch((err) => {
-    console.log('errsssssssssssssssssssssssssss', err);
-
-    redirectToKeycloak();
-  });
+}
