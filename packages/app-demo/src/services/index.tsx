@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/function-component-definition */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-ignore
 import { useAxiosInstanceHook } from '@sampaiogabriel/util-axios';
 
 type FiltroType = (filtro: any) => Promise<any>;

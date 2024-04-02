@@ -3,8 +3,11 @@
   "files": ["src/sampaiogabriel-root-config.ts"],
   "compilerOptions": {
     "declarationDir": "dist",
-    "emitDeclarationOnly": false
+    "emitDeclarationOnly": false,
+    "jsx": "react-jsx",
   },
   "include": ["src/**/*"],
   "exclude": ["src/**/*.test*"]
 }
+
+
