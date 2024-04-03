@@ -27,14 +27,11 @@ const useUserStore = create<UseUserStoreProps>((set, getState) => ({
   setUser: (user: UserProps) => set({ user }),
 
   logout: () => {
-    // const user = getState().user;
-    const Id = sessionStorage.getItem('id_token');
+    const authData = JSON.parse(sessionStorage.getItem('@auth/token'));
 
-    localStorage.clear();
+    sessionStorage.removeItem('@auth/token');
 
-    sessionStorage.clear();
-
-    window.location.href = `https://login.e-auditoria.com.br/realms/aplicacao-cliente/protocol/openid-connect/logout?id_token_hint=${Id}`;
+    window.location.href = `https://login.e-auditoria.com.br/realms/aplicacao-cliente/protocol/openid-connect/logout?id_token_hint=${authData.id_token}`;
   },
 }));
 

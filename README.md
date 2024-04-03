@@ -9,4 +9,3 @@
 -   @sampaiogabriel/util-axios -> 7002
 -   @sampaiogabriel/parcel-footer -> 6001
 -   @sampaiogabriel/parcel-navbar -> 6002
--   @sampaiogabriel/parcel-auth -> 6003
