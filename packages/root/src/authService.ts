@@ -2,8 +2,12 @@ const baseUrl = 'https://login.e-auditoria.com.br';
 const realm = 'aplicacao-cliente';
 const clientId = 'client-cliente';
 const clientSecret = 'EldjqZ7LDThiQ0f4DuLxIIf38VyilZdP';
-const redirectUri = `${window.location.origin}`;
+const redirectUri = 'http://localhost:9000';
 
+/**
+ * Manipula a autenticação do usuário, redirecionando para o servidor Keycloak ou obtendo tokens de acesso.
+ * @returns {Promise<boolean>} - Uma promessa que resolve para verdadeiro se a autenticação for bem-sucedida, ou falso caso contrário.
+ */
 export const handleAuth = async () => {
   try {
     const authData = sessionStorage.getItem('@auth/token');
@@ -37,6 +41,10 @@ export const handleAuth = async () => {
   }
 };
 
+/**
+ * Gera um estado aleatório para ser usado durante a autenticação.
+ * @returns {string} - Uma string contendo o estado aleatório gerado.
+ */
 const generateRandomState = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
     const r = (Math.random() * 16) | 0;
@@ -45,6 +53,11 @@ const generateRandomState = () => {
   });
 };
 
+/**
+ * Decodifica um token JWT e retorna o payload.
+ * @param {string} token - O token JWT a ser decodificado.
+ * @returns {object} - O payload do token decodificado.
+ */
 export const decodeJWT = (token) => {
   const parts = token.split('.');
   if (parts.length !== 3) throw new Error('Invalid JWT');
@@ -53,6 +66,9 @@ export const decodeJWT = (token) => {
   return payload;
 };
 
+/**
+ * Redireciona o usuário para o servidor Keycloak para iniciar o processo de autenticação.
+ */
 export const redirectToKeycloak = () => {
   const state = generateRandomState();
   const nonce = generateRandomState();
@@ -75,6 +91,10 @@ export const redirectToKeycloak = () => {
   window.location.href = `${connectionURI}`;
 };
 
+/**
+ * Obtém o token de acesso do servidor Keycloak usando o código de autorização recebido após o login.
+ * @param {string} code - O código de autorização recebido após o login.
+ */
 export const getToken = async (code) => {
   try {
     const formData = new URLSearchParams();
@@ -117,6 +137,9 @@ export const getToken = async (code) => {
   }
 };
 
+/**
+ * Realiza o logout do usuário, limpando os dados de autenticação armazenados na sessão do navegador.
+ */
 export const logout = () => {
   const authData = JSON.parse(sessionStorage.getItem('@auth/token'));
 
@@ -125,6 +148,11 @@ export const logout = () => {
   window.location.href = `https://login.e-auditoria.com.br/realms/aplicacao-cliente/protocol/openid-connect/logout?id_token_hint=${authData.id_token}`;
 };
 
+/**
+ * Valida o token de atualização obtido do servidor Keycloak.
+ * @param {string} refreshToken - O token de atualização a ser validado.
+ * @returns {Promise<boolean>} - Uma promessa que resolve para verdadeiro se o token de atualização for válido, ou falso caso contrário.
+ */
 export const validateToken = async (refreshToken: string) => {
   console.log('refreshToken', refreshToken);
 
