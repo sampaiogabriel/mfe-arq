@@ -145,7 +145,7 @@ export const logout = () => {
 
   sessionStorage.removeItem('@auth/token');
 
-  window.location.href = `https://login.e-auditoria.com.br/realms/aplicacao-cliente/protocol/openid-connect/logout?id_token_hint=${authData.id_token}`;
+  window.location.href = `${baseUrl}/realms/${realm}/protocol/openid-connect/logout?id_token_hint=${authData.id_token}`;
 };
 
 /**
@@ -154,8 +154,6 @@ export const logout = () => {
  * @returns {Promise<boolean>} - Uma promessa que resolve para verdadeiro se o token de atualização for válido, ou falso caso contrário.
  */
 export const validateToken = async (refreshToken: string) => {
-  console.log('refreshToken', refreshToken);
-
   const formData = new URLSearchParams();
   formData.append('client_id', 'client-cliente');
   formData.append('client_secret', 'EldjqZ7LDThiQ0f4DuLxIIf38VyilZdP');
@@ -163,7 +161,7 @@ export const validateToken = async (refreshToken: string) => {
   formData.append('refresh_token', refreshToken);
 
   const response = await fetch(
-    `https://login.e-auditoria.com.br/realms/aplicacao-cliente/protocol/openid-connect/token`,
+    `${baseUrl}/realms/${realm}/protocol/openid-connect/token`,
     {
       method: 'POST',
       headers: {

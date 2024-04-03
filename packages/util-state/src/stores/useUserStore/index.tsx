@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { create } from 'zustand';
 
 interface ProfileProps {
@@ -15,17 +14,13 @@ interface UserProps {
   profile: ProfileProps;
 }
 
-export interface UseUserStoreProps {
+export interface UseAuthStoreProps {
   user: UserProps | null;
-  setUser: (user: UserProps) => void;
   logout: () => void;
 }
 
-const useUserStore = create<UseUserStoreProps>((set, getState) => ({
+const useAuthStore = create<UseAuthStoreProps>(() => ({
   user: null,
-
-  setUser: (user: UserProps) => set({ user }),
-
   logout: () => {
     const authData = JSON.parse(sessionStorage.getItem('@auth/token'));
 
@@ -35,4 +30,23 @@ const useUserStore = create<UseUserStoreProps>((set, getState) => ({
   },
 }));
 
-export default useUserStore;
+export const decodeJWT = (token) => {
+  const parts = token.split('.');
+  if (parts.length !== 3) throw new Error('Invalid JWT');
+  const decoded = atob(parts[1]);
+  const payload = JSON.parse(decoded);
+  return payload;
+};
+
+// Carregue o token do localStorage ao inicializar a aplicação
+const initialToken = JSON.parse(sessionStorage.getItem('@auth/token'));
+
+const tokenDecoded = decodeJWT(initialToken.access_token);
+
+if (tokenDecoded) {
+  useAuthStore.setState({
+    user: tokenDecoded,
+  });
+}
+
+export default useAuthStore;

@@ -1,4 +1,3 @@
-import { useUserStore } from "@sampaiogabriel/util-state";
 import axios from "axios";
 
 const BASE_URL = "https://jsonplaceholder.typicode.com/todos";
@@ -6,10 +5,10 @@ const URL_REDIRECT = "";
 const URL_UPDATE_TOKEN = "";
 
 export default function useAxiosInstanceHook() {
-    const { user } = useUserStore();
+    const token = JSON.parse(sessionStorage.getItem('@auth/token'));
 
-    const accessToken = user.access_token;
-    const refreshToken = user.refresh_token;
+    const accessToken = token.access_token;
+    const refreshToken = token.refresh_token;
     const v3Token = accessToken;
 
     let globalToken = accessToken;

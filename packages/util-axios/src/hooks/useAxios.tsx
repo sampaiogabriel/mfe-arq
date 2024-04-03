@@ -10,13 +10,13 @@ import { useUserStore } from "@sampaiogabriel/util-state";
 
 const onRequest =
     (accessToken: string | undefined) =>
-    (config: AxiosRequestConfig): AxiosRequestConfig => {
-        if (_.isEmpty(accessToken)) return config;
+        (config: AxiosRequestConfig): AxiosRequestConfig => {
+            if (_.isEmpty(accessToken)) return config;
 
-        const newConfig = { ...config } as AxiosRequestConfig;
-        newConfig.headers.authorization = `Bearer ${accessToken}`;
-        return newConfig;
-    };
+            const newConfig = { ...config } as AxiosRequestConfig;
+            newConfig.headers.authorization = `Bearer ${accessToken}`;
+            return newConfig;
+        };
 
 const onRequestError = (error: AxiosError): Promise<AxiosError> => {
     return Promise.reject(error);
@@ -35,7 +35,7 @@ interface UseAxiosProps {
 }
 
 function useAxios({ prefixo }: UseAxiosProps): AxiosInstance {
-    const { user } = useUserStore();
+    const token = JSON.parse(sessionStorage.getItem('@auth/token'));
 
     const api = axios.create({
         baseURL: `https://jsonplaceholder.typicode.com/todos`,
@@ -46,7 +46,7 @@ function useAxios({ prefixo }: UseAxiosProps): AxiosInstance {
         paramsSerializer: { indexes: null, dots: true },
     });
 
-    api.interceptors.request.use(onRequest(user?.access_token), onRequestError);
+    api.interceptors.request.use(onRequest(token?.access_token), onRequestError);
     api.interceptors.response.use(onResponse, onResponseError);
 
     return api;
