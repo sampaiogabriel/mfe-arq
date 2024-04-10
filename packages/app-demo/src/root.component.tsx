@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition */
 import { Thing } from '@sampaiogabriel/util-ui';
 
 export default function Root(props) {
